@@ -34,6 +34,6 @@ class TaskManager(models.Model):
         tasks = self.search([("due_date", "!=", False), ("status", "!=", "completed")])
         for task in tasks:
             days_left = task.days_until_due()
-            if days_left == 3 and task.assigned_to.email:
+            if days_left is not None and days_left == 3 and task.assigned_to.email:
                 template = self.env.ref("task_manager.task_expiry_email_template")
                 template.send_mail(task.id, force_send=True)
