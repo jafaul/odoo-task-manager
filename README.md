@@ -69,13 +69,6 @@ db_user = odoo
 db_password = your-pswd
 admin_passwd = admin-secret
 xmlrpc_port = 8069
-logfile = /var/log/odoo/odoo.log
-```
-
-Create the log file:
-```bash
-sudo touch /var/log/odoo/odoo.log
-sudo chown $USER:odoo /var/log/odoo/odoo.log
 ```
 
 ---
