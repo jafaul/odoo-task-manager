@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+    <record id="view_task_manager_tree" model="ir.ui.view">
+        <field name="name">task.manager.tree</field>
+        <field name="model">task.manager</field>
+        <field name="arch" type="xml">
+            <tree string="Tasks">
+                <field name="name"/>
+                <field name="description"/>
+                <field name="assigned_to"/>
+                <field name="due_date"/>
+                <field name="priority"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_task_manager_form" model="ir.ui.view">
+        <field name="name">task.manager.form</field>
+        <field name="model">task.manager</field>
+        <field name="arch" type="xml">
+            <form string="Tasks">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="assigned_to"/>
+                        <field name="due_date"/>
+                        <field name="priority"/>
+                        <field name="status"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    </data>
+</odoo>

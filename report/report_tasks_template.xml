@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_tasks">
+        <t t-call="web.basic_layout">
+            <div class="page">
+                <h2>Tasks Report</h2>
+                <table class="table table-sm table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Assigned To</th>
+                            <th>Priority</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="docs" t-as="task">
+                            <td><t t-esc="task.name"/></td>
+                            <td><t t-esc="task.description"/></td>
+                            <td><t t-esc="task.assigned_to.name"/></td>
+                            <td><t t-esc="task.priority"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+</odoo>
