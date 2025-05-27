@@ -15,10 +15,10 @@
                     </thead>
                     <tbody>
                         <tr t-foreach="docs" t-as="task">
-                            <td><t t-esc="task.name"/></td>
-                            <td><t t-esc="task.description"/></td>
-                            <td><t t-esc="task.assigned_to.name"/></td>
-                            <td><t t-esc="task.priority"/></td>
+                            <td><t t-field="task.name"/></td>
+                            <td><t t-field="task.description"/></td>
+                            <td><t t-field="task.assigned_to.name"/></td>
+                            <td><t t-field="task.priority"/></td>
                         </tr>
                     </tbody>
                 </table>
