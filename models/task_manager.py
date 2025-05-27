@@ -1,9 +1,10 @@
-from odoo import _, fields, models
+from odoo import _, fields, models, api
 
 
 class TaskManager(models.Model):
     _name = "task.manager"
     _description = "Task Manager"
+    _inherit = "mail.thread"
 
     name = fields.Char(_("Task Name"), required=True)
     description = fields.Text(_("Task Description"))
@@ -30,10 +31,15 @@ class TaskManager(models.Model):
             return delta
         return None
 
+    # @api.model
     def send_due_soon_notifications(self):
         tasks = self.search([("due_date", "!=", False), ("status", "!=", "completed")])
+        print(f"DEBUG: Found {len(tasks)} tasks")
         for task in tasks:
             days_left = task.days_until_due()
             if days_left is not None and days_left == 3 and task.assigned_to.email:
                 template = self.env.ref("task_manager.task_expiry_email_template")
-                template.send_mail(task.id, force_send=True)
+                template.send_mail(res_id=task.id, force_send=True)
+                print(f'DEBUG: Notification sent to {task.name}')
+            else:
+                print(f"DEBUG: no need to send notification for task '{task.name}'")
